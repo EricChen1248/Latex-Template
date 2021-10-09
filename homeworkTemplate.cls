@@ -6,7 +6,7 @@
 \RequirePackage[left=1in,right=1in,top=1in,bottom=1.2in]{geometry}
 \RequirePackage{xargs}
 \RequirePackage{environ}
-\RequirePackage{graphics}
+\RequirePackage{graphicx}
 \RequirePackage{amsmath}
 \RequirePackage{bold-extra}
 \RequirePackage{xcolor}
@@ -26,8 +26,10 @@
     xleftmargin=15pt,
     numbersep=8pt,
     python3=true,
+    breaklines,
     fontsize=\footnotesize, linenos
   ]{#1}{#2}
+  \vspace{-20pt}
 }
 
 % ===================================================
@@ -72,14 +74,16 @@
     \par
     \leftskip=1.3cm
     }
-  {\par\smallskip}
+  {\par}
   
 \NewEnviron{ppart}[1][1={\roman},usedefault] {
+  \vspace*{-20pt}
+  \setlength\textwidth{0.9\textwidth}
     \stepcounter{partnum}
     \begin{tabbing}
         \hspace*{0.2cm} \= \hspace*{0.8cm} \=  \kill \\
         \> \textbf{#1{partnum})} \> \tabfill{ \BODY }
-  \end{tabbing} \par\smallskip}
+  \end{tabbing} \par}
 
 \newenvironmentx{ppart*} {
   \leftskip=1.3cm
@@ -87,8 +91,9 @@
 {\par\medskip}
 
 % answer environments
+
 \NewEnviron{answer}
-{\framebox[\textwidth][l]{\parbox{0.98\textwidth}{\BODY}}\nline}
+{\framebox[\textwidth]{\parbox{0.96\textwidth}{\setlength\textwidth{0.96\textwidth}\BODY}}\nline}
 
 % ================================================================
 
